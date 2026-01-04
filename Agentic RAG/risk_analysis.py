@@ -184,14 +184,14 @@ st.set_page_config(page_title="Risk Analyst", page_icon="💸", layout="wide")
 st.title("💸 Agentic Financial Risk Analyst")
 
 # --- File Upload Section ---
-    uploaded_files = st.file_uploader("Upload receipt images", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
-    if uploaded_files:
-        os.makedirs(RECEIPT_DIR, exist_ok=True)
-        for file in uploaded_files:
-            with open(os.path.join(RECEIPT_DIR, file.name), "wb") as f:
-                f.write(file.getbuffer())
-        ingest_receipts()
-        st.success("Receipts indexed Successfully!")
+uploaded_files = st.file_uploader("Upload receipt images", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
+if uploaded_files:
+    os.makedirs(RECEIPT_DIR, exist_ok=True)
+    for file in uploaded_files:
+        with open(os.path.join(RECEIPT_DIR, file.name), "wb") as f:
+            f.write(file.getbuffer())
+    ingest_receipts()
+    st.success("Receipts indexed Successfully!")
 
 # --- Query Section ---
 st.subheader("🔎 Step 2: Ask Your Question")
@@ -211,4 +211,5 @@ if st.button("🚀 Analyze Risk") and query:
     st.success("Task Complete.")
 
 # --- Footer ---
+
 st.markdown("---")
